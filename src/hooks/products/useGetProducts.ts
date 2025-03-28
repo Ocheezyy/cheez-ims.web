@@ -1,19 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import { Product } from "@/types.ts";
 
-export const useGetProducts = () => {
+type IncludeString = "category,supplier" | "category" | "supplier";
+
+export const useGetProducts = (include?: IncludeString) => {
   return useQuery<Product[], Error>({
-    queryKey: ["products"],
+    queryKey: ["products", include],
     queryFn: async (): Promise<Product[]> => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
+      let url = `${import.meta.env.VITE_API_URL}/api/products`;
+      if (include) url += `?include=${include}`;
+      const res = await fetch(url);
 
       if (!res.ok) {
         const error = await res.text();
         throw new Error(`Failed to fetch products: ${error}`);
       }
 
-      const products: Product[] = await res.json();
-      return products;
+      return await res.json();
     },
   });
 };
