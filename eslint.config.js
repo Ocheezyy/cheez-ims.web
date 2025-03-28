@@ -11,7 +11,7 @@ import tseslintParser from "@typescript-eslint/parser"
 export default [
     ...pluginQuery.configs["flat/recommended"],
     {
-        ignores: ['dist', "**/types.ts"],
+        ignores: ['dist', "**/types.ts", "vite.config.ts"],
     },
     {
         files: ['**/*.{ts,tsx}'],
