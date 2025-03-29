@@ -63,7 +63,7 @@ export function OverviewStatsCards({
         : formatNumbers(false, data?.[cardLookup.key]);
 
     return (
-      <Card>
+      <Card key={cardLookup.key}>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">
             {isLoading ? (
@@ -78,13 +78,13 @@ export function OverviewStatsCards({
           <div className="text-2xl font-bold">
             {isLoading ? <Skeleton className="h-4 w-[100px]" /> : valueStr}
           </div>
-          <p className="text-xs text-muted-foreground">
-            {isLoading ? (
-              <Skeleton className="h-4 w-[100px]" />
-            ) : (
+          {isLoading ? (
+            <Skeleton className="h-4 w-[100px]" />
+          ) : (
+            <p className="text-xs text-muted-foreground">
               cardLookup.placeholder
-            )}
-          </p>
+            </p>
+          )}
         </CardContent>
       </Card>
     );
