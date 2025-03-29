@@ -33,7 +33,7 @@ export function NavBar({ className, currentRoute, ...props }: NavbarProps) {
         className="flex items-center space-x-2 font-medium text-lg mr-6"
       >
         <Package className="h-5 w-5" />
-        <span>InventoryPro</span>
+        <span>Cheez Inventory</span>
       </Link>
 
       {/* Mobile menu button */}
@@ -53,7 +53,7 @@ export function NavBar({ className, currentRoute, ...props }: NavbarProps) {
                 onClick={() => setOpen(false)}
               >
                 <Package className="h-5 w-5" />
-                <span>InventoryPro</span>
+                <span>Cheez Inventory</span>
               </Link>
               <Button
                 variant="ghost"
