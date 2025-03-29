@@ -82,7 +82,7 @@ export function OverviewStatsCards({
             <Skeleton className="h-4 w-[100px]" />
           ) : (
             <p className="text-xs text-muted-foreground">
-              cardLookup.placeholder
+              {cardLookup.placeholder}
             </p>
           )}
         </CardContent>
